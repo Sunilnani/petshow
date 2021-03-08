@@ -1,10 +1,10 @@
 import 'dart:convert';
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_pet_show/base_networks.dart';
 import 'package:flutter_pet_show/pet_profile.dart';
 
-import 'models/Pets_Data.dart';
+import 'models/pets.dart';
+import 'network/base_networks.dart';
 class Homepage extends StatefulWidget {
   @override
   _HomepageState createState() => _HomepageState();

@@ -1,8 +1,8 @@
 
 import 'package:flutter/material.dart';
-import 'package:flutter_pet_show/PetsHomepage.dart';
+import 'package:flutter_pet_show/pets_homepage.dart';
 
-import 'models/Pets_Data.dart';
+import 'models/pets.dart';
 class PetProfile extends StatefulWidget {
   PetProfile({this.todo});
   final Pets todo;
