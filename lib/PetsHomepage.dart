@@ -3,7 +3,7 @@ import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_pet_show/pet_profile.dart';
 
-import 'models/pets_types.dart';
+import 'models/Pets_Data.dart';
 class Homepage extends StatefulWidget {
   @override
   _HomepageState createState() => _HomepageState();
@@ -26,6 +26,7 @@ class _HomepageState extends State<Homepage> {
         listpets = petsFromJson(jsonEncode(response.data));
         print(response);
       });
+
     } catch (e) {
       setState(() {
       });
@@ -114,18 +115,15 @@ class _HomepageState extends State<Homepage> {
                             scrollDirection: Axis.vertical,
                             shrinkWrap: true,
                             itemBuilder: (context, index) {
-                              Pets todos = listpets[index];
+                              Pets pets_details = listpets[index];
                               return PetDetails(
                                 liked:false,
-                                name: todos.name,
-                                image: todos.image,
-                                age: todos.age,
-                                sex: todos.sex,
-                                distance: todos.distance,
-                                petdescription: todos.description,
-
-
-
+                                name: pets_details.name,
+                                image: pets_details.image,
+                                age: pets_details.age,
+                                sex: pets_details.sex,
+                                distance: pets_details.distance,
+                                todo: pets_details,
                               );
                             },
                           ),
@@ -151,12 +149,8 @@ class PetDetails extends StatefulWidget {
     this.age,
     this.sex,
     this.distance,
-    this.petimage,
-    this.petname,
-    this.petage,
-    this.petdistance,
-    this.petdescription,
     this.liked,
+    this.todo,
     Key key,
   }) : super(key: key);
   final String name;
@@ -164,12 +158,8 @@ class PetDetails extends StatefulWidget {
   final Age age;
   final Sex sex;
   final int distance;
-  final String petimage;
-  final String petname;
-  final Age petage;
-  final int petdistance;
-  final String petdescription;
   final bool liked;
+  final Pets todo;
 
   @override
   _PetDetailsState createState() => _PetDetailsState();
@@ -202,7 +192,7 @@ class _PetDetailsState extends State<PetDetails> {
                   onTap: (){
                     Navigator.of(context).push(
                       MaterialPageRoute(
-                        builder: (context) => PetProfile(petimage: widget.image,petname: widget.name,petage: widget.age,petdistance: widget.distance,petdescription: widget.petdescription,
+                        builder: (context) => PetProfile(todo: widget.todo,
                         ),
                       ),
                     );
@@ -210,12 +200,13 @@ class _PetDetailsState extends State<PetDetails> {
                   child: Container(
                     decoration: BoxDecoration(borderRadius: BorderRadius.circular(18),
                         image: DecorationImage(
-                            image: NetworkImage(widget.image,),
+                            image: widget.image !=null? NetworkImage(widget.image,):AssetImage("img/bear.jfif"),
                           fit: BoxFit.cover
                         )
                     ),
                     height: 100,
                     width: 100,
+
                   ),
                 ),
                 Column(

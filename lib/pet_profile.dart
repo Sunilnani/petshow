@@ -1,15 +1,11 @@
 
 import 'package:flutter/material.dart';
-import 'package:flutter_pet_show/Homepage.dart';
+import 'package:flutter_pet_show/PetsHomepage.dart';
 
-import 'models/pets_types.dart';
+import 'models/Pets_Data.dart';
 class PetProfile extends StatefulWidget {
-  PetProfile({this.petname,this.petimage,this.petage,this.petdistance,this.petdescription});
-  final  String petname ;
-  final String petimage;
-  final Age petage;
-  final int petdistance;
-  final String petdescription;
+  PetProfile({this.todo});
+  final Pets todo;
   @override
   _PetProfileState createState() => _PetProfileState();
 }
@@ -77,7 +73,7 @@ class _PetProfileState extends State<PetProfile> {
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          Text(widget.petname,style: TextStyle(color: Color(0xFF3b3a38),fontWeight: FontWeight.w900,fontSize: 22),),
+                          Text(widget.todo.name,style: TextStyle(color: Color(0xFF3b3a38),fontWeight: FontWeight.w900,fontSize: 22),),
                           Icon(Icons.motion_photos_pause_outlined,color: Color(0xFFd9d9d9))
                         ],
                       ),
@@ -86,14 +82,14 @@ class _PetProfileState extends State<PetProfile> {
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           Text("Golden Retriver",style: TextStyle(color: Color(0xFF636363),fontSize: 13,fontWeight: FontWeight.w600),),
-                          Text("${widget.petage}",style: TextStyle(color: Color(0xFF636363),fontSize: 13,fontWeight: FontWeight.w600),)
+                          Text("${widget.todo.age}",style: TextStyle(color: Color(0xFF636363),fontSize: 13,fontWeight: FontWeight.w600),)
                         ],
                       ),
                       SizedBox(height: 10,),
                       Row(
                         children: [
                           Icon(Icons.location_on,color: Colors.orange,size: 19,),
-                          Text("${widget.petdistance} kms away",style: TextStyle(color: Colors.grey,fontSize: 12,fontWeight: FontWeight.w400),)
+                          Text("${widget.todo.distance} kms away",style: TextStyle(color: Colors.grey,fontSize: 12,fontWeight: FontWeight.w400),)
                         ],
                       ),
                       SizedBox(height: 10,),
@@ -103,7 +99,7 @@ class _PetProfileState extends State<PetProfile> {
                           decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(3),
                             image: DecorationImage(
-                                image: NetworkImage(widget.petimage),fit: BoxFit.cover
+                                image: NetworkImage(widget.todo.image),fit: BoxFit.cover
                             ),
                             color: Colors.red,
                           )),
@@ -112,7 +108,7 @@ class _PetProfileState extends State<PetProfile> {
                           alignment: Alignment.topLeft,
                           child: Text("About",style: TextStyle(color: Colors.black,fontWeight: FontWeight.w700,fontSize: 22),)),
                       SizedBox(height: 12,),
-                      Text(widget.petdescription,style: TextStyle(color: Colors.grey[400]),),
+                      Text(widget.todo.description,style: TextStyle(color: Colors.grey[400]),),
                       SizedBox(height: 30,),
 
                     ],
