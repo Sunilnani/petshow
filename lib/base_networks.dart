@@ -23,7 +23,7 @@ class BaseNetwork {
 
     _dio = Dio();
     _dio.options = BaseOptions(
-      baseUrl: "https://api.npoint.io/a145beb7c3963677dd5d",
+      baseUrl: "https://api.npoint.io/5251edda932f79c3728b",
       validateStatus: (status) => status < 500,
     );
 

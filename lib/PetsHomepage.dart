@@ -1,6 +1,7 @@
 import 'dart:convert';
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_pet_show/base_networks.dart';
 import 'package:flutter_pet_show/pet_profile.dart';
 
 import 'models/Pets_Data.dart';
@@ -21,7 +22,7 @@ class _HomepageState extends State<Homepage> {
     });
     try {
       Response response =
-      await Dio().get("https://api.npoint.io/a145beb7c3963677dd5d");
+      await dioClient.ref.get("https://api.npoint.io/5251edda932f79c3728b");
       setState(() {
         listpets = petsFromJson(jsonEncode(response.data));
         print(response);
